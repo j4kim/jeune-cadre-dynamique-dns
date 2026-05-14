@@ -1,14 +1,14 @@
 # jeune-cadre-dynamique-dns
 
-Ce projet fournit un client DynDNS pour mettre à jour `neuve.3sdl.ch` avec l'adresse IP publique de votre routeur et envoyer une notification par email lorsque l'IP change.
+Client DynDNS pour mettre à jour un nom de domaine Infomaniak et envoyer une notification par email lorsque l'IP change.
 
 ## Installation
 
 1. Créer un environnement virtuel Python :
 
    ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
+   python3 -m venv venv
+   source venv/bin/activate
    ```
 2. Installer les dépendances :
 
@@ -28,13 +28,7 @@ Ce projet fournit un client DynDNS pour mettre à jour `neuve.3sdl.ch` avec l'ad
 Lancer manuellement :
 
 ```bash
-./dyn_dns_updater.py
-```
-
-Utiliser `ENV_PATH` si le fichier d'environnement se trouve ailleurs :
-
-```bash
-ENV_PATH=/chemin/vers/.env ./dyn_dns_updater.py
+python ./dyn_dns_updater.py
 ```
 
 ## Cron
@@ -42,7 +36,7 @@ ENV_PATH=/chemin/vers/.env ./dyn_dns_updater.py
 Ajouter une tâche cron sur le Raspberry Pi pour exécuter le script régulièrement, par exemple toutes les 15 minutes :
 
 ```cron
-*/15 * * * * cd /chemin/vers/jeune-cadre-dynamique-dns && /usr/bin/env python3 dyn_dns_updater.py >> dyn_dns_updater.log 2>&1
+*/15 * * * * cd /path/to/jeune-cadre-dynamique-dns && ./venv/bin/python dyn_dns_updater.py >> logs.log 2>&1
 ```
 
 ## Fichier d'environnement
