@@ -156,6 +156,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.last_ip
 
 # Spyder project settings
 .spyderproject
