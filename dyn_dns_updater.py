@@ -14,11 +14,10 @@ ENV_FILENAME = ".env"
 LAST_IP_FILENAME = ".last_ip"
 PUBLIC_IP_URL = "https://ifconfig.me/ip"
 INFOMANIAK_BASE_URL = "https://infomaniak.com/nic/update"
-USER_AGENT = "dyn-dns-updater/1.0"
 
 
 def get_public_ip() -> str:
-    response = requests.get(PUBLIC_IP_URL, headers={"User-Agent": USER_AGENT}, timeout=15)
+    response = requests.get(PUBLIC_IP_URL)
     response.raise_for_status()
     ip = response.text.strip()
     if not ip:
@@ -41,8 +40,6 @@ def update_infomaniak(username: str, password: str, hostname: str, ip: str) -> s
         INFOMANIAK_BASE_URL,
         params={"hostname": hostname, "myip": ip},
         auth=(username, password),
-        headers={"User-Agent": USER_AGENT},
-        timeout=15,
     )
     response.raise_for_status()
     body = response.text.strip()
