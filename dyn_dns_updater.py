@@ -17,13 +17,6 @@ INFOMANIAK_BASE_URL = "https://infomaniak.com/nic/update"
 USER_AGENT = "dyn-dns-updater/1.0"
 
 
-def parse_bool(value: str | None, default: bool = False) -> bool:
-    if value is None:
-        return default
-    normalized = value.strip().lower()
-    return normalized in {"1", "true", "yes", "y", "on"}
-
-
 def get_public_ip() -> str:
     response = requests.get(PUBLIC_IP_URL, headers={"User-Agent": USER_AGENT}, timeout=15)
     response.raise_for_status()
@@ -125,8 +118,8 @@ def main() -> int:
     smtp_password = os.getenv("SMTP_PASSWORD")
     smtp_from = os.getenv("SMTP_FROM", smtp_username or f"dyn-dns@{hostname}")
     recipient = os.environ["EMAIL_TO"]
-    use_tls = parse_bool(os.getenv("SMTP_USE_TLS", "true"))
-    use_ssl = parse_bool(os.getenv("SMTP_USE_SSL", "false"))
+    use_tls = os.getenv("SMTP_USE_TLS", "true") == "true"
+    use_ssl = os.getenv("SMTP_USE_SSL", "false") == "true"
     last_ip_path = root / os.getenv("LAST_IP_FILE", LAST_IP_FILENAME)
 
     try:
