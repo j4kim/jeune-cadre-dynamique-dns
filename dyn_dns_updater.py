@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 ENV_FILENAME = ".env"
 LAST_IP_FILENAME = ".last_ip"
-PUBLIC_IP_URL = "https://ifconfig.me/ip"
+PUBLIC_IP_URL = "https://api.ipify.org"
 INFOMANIAK_BASE_URL = "https://infomaniak.com/nic/update"
 USER_AGENT = "dyn-dns-updater/1.0"
 
