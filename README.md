@@ -10,11 +10,13 @@ Client DynDNS pour mettre à jour un nom de domaine Infomaniak et envoyer une no
    python3 -m venv venv
    source venv/bin/activate
    ```
+
 2. Installer les dépendances :
 
    ```bash
    pip install -r requirements.txt
    ```
+
 3. Copier `.env.example` en `.env`.
 4. Remplir les variables d'environnement avec les identifiants Infomaniak et la configuration SMTP.
 5. Rendre le script exécutable :
@@ -42,7 +44,7 @@ Ajouter une tâche cron sur le Raspberry Pi pour exécuter le script régulière
 ## Fichier d'environnement
 
 - `INFOMANIAK_USERNAME` et `INFOMANIAK_PASSWORD` pour l'authentification DynDNS.
-- `INFOMANIAK_HOSTNAME` = `neuve.3sdl.ch`.
+- `INFOMANIAK_HOSTNAME` le domaine à rediriger.
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD` pour l'envoi d'email.
 - `EMAIL_TO` pour la notification.
 - `SMTP_USE_TLS` ou `SMTP_USE_SSL` pour la connexion SMTP.
